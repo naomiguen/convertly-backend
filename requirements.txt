@@ -1,0 +1,18 @@
+#core api
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0   # Server untuk menjalankan FastAPI
+python-multipart>=0.0.9     # Wajib ada untuk fitur Upload File
+python-dotenv>=1.0.1        # Untuk membaca file konfigurasi .env
+
+#  Background Worker & Queue 
+celery>=5.3.6               # Manager untuk antrian tugas berat
+redis>=5.0.1                # Driver agar Python bisa bicara dengan Redis
+
+# File Processing (The Heavy Lifters) 
+Pillow>=10.2.0              # Manipulasi Gambar (Resize/Convert)
+pikepdf>=8.11.0             # Manipulasi PDF (Compress/Merge) - Cepat & Ringan
+patool>=2.1.1               # Manipulasi Archive (Zip/Rar)
+
+# Utilities
+aiofiles>=23.2.1            # Agar bisa simpan file secara async (non-blocking)
+httpx>=0.26.0               # Client HTTP (berguna untuk testing nanti)
