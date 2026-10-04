@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest>=8.0
+httpx>=0.26.0               # dibutuhkan fastapi.testclient
+python-pptx>=1.0            # membuat PPTX uji
+fakeredis[lua]>=2.26         # server Redis palsu (termasuk Lua) untuk tes

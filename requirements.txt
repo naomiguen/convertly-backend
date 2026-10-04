@@ -1,18 +1,23 @@
-#core api
+# core api
 fastapi>=0.109.0
 uvicorn[standard]>=0.27.0   # Server untuk menjalankan FastAPI
 python-multipart>=0.0.9     # Wajib ada untuk fitur Upload File
 python-dotenv>=1.0.1        # Untuk membaca file konfigurasi .env
 
-#  Background Worker & Queue 
-celery>=5.3.6               # Manager untuk antrian tugas berat
-redis>=5.0.1                # Driver agar Python bisa bicara dengan Redis
+# File processing
+Pillow>=10.2.0              # Gambar (compress/resize/convert/image->PDF)
+pikepdf>=8.11.0             # PDF (compress/merge/split/rotate/protect/unlock)
+pymupdf>=1.24.0             # Render PDF -> gambar, nomor halaman, watermark, OCR PDF
+pdf2docx>=0.5.8             # PDF -> Word
+python-docx>=1.1            # Menulis hasil OCR ke .docx
+opencv-python-headless>=4.8 # Pas foto: deteksi wajah (YuNet) + pemisahan latar (GrabCut)
+numpy>=1.26
+rapidocr-onnxruntime>=1.2.3 # OCR (model sudah ikut di paket; menarik juga paket opencv-python)
+docx2pdf>=0.1.8; sys_platform == "win32"   # Word -> PDF lewat Microsoft Word (hanya Windows, fallback)
+pywin32>=306; sys_platform == "win32"      # PowerPoint -> PDF lewat Microsoft PowerPoint (fallback)
 
-# File Processing (The Heavy Lifters) 
-Pillow>=10.2.0              # Manipulasi Gambar (Resize/Convert)
-pikepdf>=8.11.0             # Manipulasi PDF (Compress/Merge) - Cepat & Ringan
-patool>=2.1.1               # Manipulasi Archive (Zip/Rar)
+# Penyimpan bersama rate limit / batas pekerjaan antar worker (opsional: aktif jika REDIS_URL diisi)
+redis>=5.0.1
 
-# Utilities
-aiofiles>=23.2.1            # Agar bisa simpan file secara async (non-blocking)
-httpx>=0.26.0               # Client HTTP (berguna untuk testing nanti)
+# Belum dipakai (rencana: antrian tugas berat). Boleh dihapus kalau tidak jadi.
+celery>=5.3.6
